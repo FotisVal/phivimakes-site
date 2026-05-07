@@ -3,43 +3,31 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const projects = [
-  {
-    title: "Modular Desk Organizer",
-    type: "3D Printed Product",
-    href: "/projects/modular-desk-organizer",
-  },
-  {
-    title: "Aquarium Utility Part",
-    type: "Functional Prototype",
-    href: "/projects/aquarium-utility-part",
-  },
-  {
-    title: "Custom Mechanical Holder",
-    type: "Custom Build",
-    href: "/projects/custom-mechanical-holder",
-  },
-];
+import { latestProjects as projects } from "@/data/projects";
 
 const text = {
   el: {
-    about: "ABOUT",
-    projects: "PROJECTS",
-    hero: "Ideas made physical.",
+    about: "ΣΧΕΤΙΚΑ",
+    projects: "ΕΡΓΑ",
+    hero: "Ιδέες που γίνονται πραγματικότητα.",
     intro:
-      "Είμαι ο δημιουργός πίσω από το PhiVi Makes. Σχεδιάζω και κατασκευάζω custom αντικείμενα, prototypes και πρακτικές λύσεις με 3D printing.",
+      "Είμαι ο δημιουργός πίσω από το PhiVi Makes. Σχεδιάζω και κατασκευάζω custom αντικείμενα, πρωτότυπα και πρακτικές λύσεις με 3D printing.",
     aboutText:
-      "Το PhiVi Makes είναι ένα creative project γύρω από το 3D printing, το product design και τις custom κατασκευές.",
+      "Το PhiVi Makes είναι ένα δημιουργικό project γύρω από την τρισδιάστατη εκτύπωση, τον σχεδιασμό προϊόντων και τις custom κατασκευές.",
     goal:
       "Στόχος είναι κάθε ιδέα να γίνεται ένα χρήσιμο, όμορφο και λειτουργικό αντικείμενο.",
-    viewProjects: "View Projects",
-    contactMe: "Contact Me",
-    selectedBuilds: "Selected Builds",
+    viewProjects: "Δες τα έργα",
+    contactMe: "Επικοινωνία",
+    latestProjects: "Πρόσφατα έργα",
     projectSubtitle:
-      "Επιλεγμένες κατασκευές, prototypes και custom 3D printed λύσεις.",
-    contactTitle: "Have an idea?",
+      "Τα τρία πιο πρόσφατα projects από custom κατασκευές, prototypes και 3D printed λύσεις.",
+    more: "Περισσότερα →",
+    contactTitle: "Έχεις μια ιδέα;",
     contactText:
-      "Ακολούθησε το PhiVi Makes ή στείλε μήνυμα για custom project, 3D printed part ή συνεργασία.",
+      "Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.",
+    socialsTitle: "Ακολούθησέ με",
+    socialsText:
+      "Βρες το PhiVi Makes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
   },
   en: {
     about: "ABOUT",
@@ -53,12 +41,16 @@ const text = {
       "The goal is to turn every idea into a useful, beautiful and functional object.",
     viewProjects: "View Projects",
     contactMe: "Contact Me",
-    selectedBuilds: "Selected Builds",
+    latestProjects: "Latest Projects",
     projectSubtitle:
-      "Selected builds, prototypes and custom 3D printed solutions.",
+      "The three latest custom builds, prototypes and 3D printed solutions.",
+    more: "More →",
     contactTitle: "Have an idea?",
     contactText:
-      "Follow PhiVi Makes or send a message for a custom project, 3D printed part or collaboration.",
+      "Send me a message for a custom project, prototype or collaboration.",
+    socialsTitle: "Follow me",
+    socialsText:
+      "Find PhiVi Makes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
   },
 };
 
@@ -74,7 +66,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,6,23,0.25),rgba(2,6,23,0.9))]" />
       </div>
 
-      <section id="about" className="relative z-10 min-h-screen px-6 py-8 md:px-12 lg:px-20">
+      <section
+        id="about"
+        className="relative z-10 min-h-screen px-6 py-8 md:px-12 lg:px-20"
+      >
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-cyan-400/25 bg-slate-950/45 px-5 py-4 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-xl">
           <Link href="/" className="text-xl font-black tracking-tight">
             PHIVI<span className="text-cyan-300">MAKES</span>
@@ -82,9 +77,15 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <div className="hidden gap-8 text-sm text-slate-300 md:flex">
-              <Link href="#about" className="hover:text-cyan-300">About</Link>
-              <Link href="/projects" className="hover:text-cyan-300">Projects</Link>
-              <Link href="#contact" className="hover:text-cyan-300">Contact</Link>
+              <Link href="#about" className="hover:text-cyan-300">
+                {lang === "el" ? "Σχετικά" : "About"}
+              </Link>
+              <Link href="/projects" className="hover:text-cyan-300">
+                {lang === "el" ? "Έργα" : "Projects"}
+              </Link>
+              <Link href="#contact" className="hover:text-cyan-300">
+                {lang === "el" ? "Επικοινωνία" : "Contact"}
+              </Link>
             </div>
 
             <button
@@ -96,13 +97,13 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="mx-auto mt-14 grid max-w-7xl items-center gap-14 rounded-[2.5rem] border border-cyan-400/20 bg-slate-950/45 p-7 shadow-[0_0_90px_rgba(34,211,238,0.12)] backdrop-blur-xl md:grid-cols-2 md:p-12">
-          <div>
-            <h1 className="text-6xl font-black leading-none tracking-tight text-cyan-100 md:text-8xl lg:text-9xl">
-              {t.about}
-            </h1>
+        <h1 className="mx-auto mt-14 max-w-7xl text-6xl font-black leading-none tracking-tight text-cyan-100 md:text-8xl lg:text-9xl">
+          {t.about}
+        </h1>
 
-            <h2 className="mt-6 max-w-3xl text-4xl font-black leading-[0.95] tracking-tight md:text-6xl">
+        <div className="mx-auto mt-8 grid max-w-7xl items-center gap-14 rounded-[2.5rem] border border-cyan-400/20 bg-slate-950/45 p-7 shadow-[0_0_90px_rgba(34,211,238,0.12)] backdrop-blur-xl md:grid-cols-2 md:p-12">
+          <div>
+            <h2 className="max-w-3xl text-4xl font-black leading-[0.95] tracking-tight md:text-6xl">
               {t.hero}
             </h2>
 
@@ -180,7 +181,7 @@ export default function Home() {
 
           <div className="mt-8 rounded-[2rem] border border-cyan-400/20 bg-slate-950/45 p-6 backdrop-blur-xl md:p-8">
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">
-              {t.selectedBuilds}
+              {t.latestProjects}
             </p>
 
             <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
@@ -196,27 +197,43 @@ export default function Home() {
                 className="group rounded-[2rem] border border-cyan-400/20 bg-slate-950/45 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300/60 hover:bg-cyan-300/10"
               >
                 <div className="mb-8 aspect-video rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/20 via-blue-500/10 to-violet-500/20" />
-                <p className="text-sm font-semibold text-cyan-300">{project.type}</p>
+
+                <p className="text-sm font-semibold text-cyan-300">
+                  {project.type}
+                </p>
+
                 <h3 className="mt-3 text-2xl font-black">{project.title}</h3>
+
                 <p className="mt-5 text-slate-400 group-hover:text-slate-200">
                   Open project →
                 </p>
               </Link>
             ))}
           </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/projects"
+              className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-8 py-4 text-lg font-bold text-cyan-200 transition hover:bg-cyan-300/20"
+            >
+              {t.more}
+            </Link>
+          </div>
         </div>
       </section>
 
-            <section id="contact" className="relative z-10 px-6 py-20 md:px-12 lg:px-20">
+      <section
+        id="contact"
+        className="relative z-10 px-6 py-20 md:px-12 lg:px-20"
+      >
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
-          
           <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-300 p-8 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:p-12">
             <h2 className="text-4xl font-black tracking-tight md:text-6xl">
-              Have an idea?
+              {t.contactTitle}
             </h2>
 
             <p className="mt-5 max-w-xl text-lg text-slate-800">
-              Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.
+              {t.contactText}
             </p>
 
             <a
@@ -227,18 +244,13 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="rounded-[2rem] border border-cyan-400/20 bg-slate-950/45 p-8 backdrop-blur-xl shadow-[0_0_60px_rgba(34,211,238,0.10)] md:p-12">
-            <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">
-              Follow PhiVi Makes
-            </p>
+          <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-300 p-8 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:p-12">
+            <h2 className="text-4xl font-black tracking-tight md:text-6xl">
+              {t.socialsTitle}
+            </h2>
 
-            <h3 className="mt-4 text-3xl font-black tracking-tight md:text-5xl">
-              Socials
-            </h3>
-
-            <p className="mt-5 max-w-md text-lg leading-8 text-slate-300">
-              Ακολούθησε το PhiVi Makes για νέα builds, prototypes,
-              behind the scenes και future projects.
+            <p className="mt-5 max-w-xl text-lg text-slate-800">
+              {t.socialsText}
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -246,7 +258,7 @@ export default function Home() {
                 href="https://www.instagram.com/TO_INSTAGRAM_SOU"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-7 py-4 text-center font-bold text-cyan-200 transition hover:bg-cyan-300/20"
+                className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
               >
                 Instagram
               </a>
@@ -255,7 +267,7 @@ export default function Home() {
                 href="https://www.tiktok.com/@TO_TIKTOK_SOU"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-fuchsia-300/30 bg-fuchsia-400/10 px-7 py-4 text-center font-bold text-fuchsia-200 transition hover:bg-fuchsia-400/20"
+                className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
               >
                 TikTok
               </a>
