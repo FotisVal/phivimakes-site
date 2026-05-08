@@ -57,6 +57,12 @@ const text = {
 export default function Home() {
   const [lang, setLang] = useState<"el" | "en">("el");
   const t = text[lang];
+  const projects = [...allProjects]
+    .sort(
+      (a, b) =>
+        new Date(b.date).getTime() - new Date(a.date).getTime()
+    )
+    .slice(0, 3);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
