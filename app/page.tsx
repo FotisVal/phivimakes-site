@@ -246,10 +246,10 @@ export default function Home() {
             </p>
 
             <a
-              href="mailto:hello@phi-vi-makes.com"
+              href="mailto:phivimakes@gmail.com"
               className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-bold text-white transition hover:bg-slate-800"
             >
-              hello@phi-vi-makes.com
+              phivimakes@gmail.com
             </a>
           </div>
 
@@ -264,7 +264,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://www.instagram.com/TO_INSTAGRAM_SOU"
+                href="https://www.instagram.com/phivimakes?igsh=ejRibTdrMm9sNXZk"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
@@ -273,7 +273,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://www.tiktok.com/@TO_TIKTOK_SOU"
+                href="https://www.tiktok.com/@phivimakes?_r=1&_d=ed9bb7kb0elhbe&sec_uid=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&share_author_id=7637309696769311766&sharer_language=en&source=h5_m&u_code=f3bd0c0i76gmch&timestamp=1778199841&user_id=7637309696769311766&sec_user_id=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7634100450640611094&share_link_id=41ab6d3a-91c3-4347-8a7a-b2381d7f6645&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
