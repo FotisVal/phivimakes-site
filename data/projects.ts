@@ -1,4 +1,17 @@
-export const allProjects = [
+export type Project = {
+  title: string;
+  type: string;
+  category: string;
+  slug: string;
+  href: string;
+  date: string;
+  description: string;
+  coverImage?: string;
+  images?: string[];
+  stl?: string;
+};
+
+export const allProjects: Project[] = [
   {
     title: "Λαγούμι",
     type: "Aquarium",
@@ -8,6 +21,12 @@ export const allProjects = [
     date: "2026-05-08",
     description:
       "3D printed aquarium cave structure designed for fish shelter and aquascaping.",
+    coverImage: "/projects/aquarium/lagoumi/cover.jpg",
+    images: [
+      "/projects/aquarium/lagoumi/1.jpg",
+      "/projects/aquarium/lagoumi/2.jpg",
+    ],
+    stl: "/models/aquarium/lagoumi.stl",
   },
   {
     title: "Νησίδα",
@@ -18,15 +37,11 @@ export const allProjects = [
     date: "2026-05-07",
     description:
       "Floating-style aquarium island concept with custom rock and plant support.",
-  },
-  {
-    title: "Mini Cooper Phone Mount",
-    type: "Mini Cooper",
-    category: "mini-cooper",
-    slug: "phone-mount",
-    href: "/projects/mini-cooper/phone-mount",
-    date: "2026-05-06",
-    description:
-      "Custom 3D printed phone mount for Mini Cooper interior use.",
+    coverImage: "/projects/aquarium/nisida/cover.jpg",
+    images: [
+      "/projects/aquarium/nisida/1.jpg",
+      "/projects/aquarium/nisida/2.jpg",
+    ],
+    stl: "/models/aquarium/nisida.stl",
   },
 ];

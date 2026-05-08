@@ -2,20 +2,16 @@
 
 import Link from "next/link";
 import { useState } from "react";
-
 import { allProjects } from "@/data/projects";
 
 const text = {
   el: {
     about: "ΣΧΕΤΙΚΑ",
     projects: "ΕΡΓΑ",
-    hero: "Ιδέες που γίνονται πραγματικότητα.",
+    hero: "Κατασκευές για καθημερινή χρήση.",
     intro:
-      "Είμαι ο δημιουργός πίσω από το PhiVi Makes. Σχεδιάζω και κατασκευάζω custom αντικείμενα, πρωτότυπα και πρακτικές λύσεις με 3D printing.",
-    aboutText:
-      "Το PhiVi Makes είναι ένα δημιουργικό project γύρω από την τρισδιάστατη εκτύπωση, τον σχεδιασμό προϊόντων και τις custom κατασκευές.",
-    goal:
-      "Στόχος είναι κάθε ιδέα να γίνεται ένα χρήσιμο, όμορφο και λειτουργικό αντικείμενο.",
+      "Σχέδια και αντικείμενα που δημιούργησα για να λύσω πρακτικές ανάγκες της καθημερινότητάς μου, συγκεντρωμένα εδώ ώστε να μπορούν να τα αξιοποιήσουν και άλλοι.",
+    moreAbout: "Περισσότερα →",
     viewProjects: "Δες τα έργα",
     contactMe: "Επικοινωνία",
     latestProjects: "Πρόσφατα έργα",
@@ -23,8 +19,7 @@ const text = {
       "Τα τρία πιο πρόσφατα projects από custom κατασκευές, prototypes και 3D printed λύσεις.",
     more: "Περισσότερα →",
     contactTitle: "Έχεις μια ιδέα;",
-    contactText:
-      "Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.",
+    contactText: "Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.",
     socialsTitle: "Ακολούθησέ με",
     socialsText:
       "Βρες το PhiVi Makes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
@@ -32,22 +27,18 @@ const text = {
   en: {
     about: "ABOUT",
     projects: "PROJECTS",
-    hero: "Ideas made physical.",
+    hero: "Built for everyday use.",
     intro:
-      "I am the creator behind PhiVi Makes. I design and build custom objects, prototypes and practical solutions through 3D printing.",
-    aboutText:
-      "PhiVi Makes is a creative project focused on 3D printing, product design and custom fabrication.",
-    goal:
-      "The goal is to turn every idea into a useful, beautiful and functional object.",
+      "Practical designs and objects I created to solve everyday needs, collected here so others can use, adapt and enjoy them too.",
+    moreAbout: "More about me →",
     viewProjects: "View Projects",
-    contactMe: "Contact Me",
+    contactMe: "Contact",
     latestProjects: "Latest Projects",
     projectSubtitle:
       "The three latest custom builds, prototypes and 3D printed solutions.",
     more: "More →",
     contactTitle: "Have an idea?",
-    contactText:
-      "Send me a message for a custom project, prototype or collaboration.",
+    contactText: "Send me a message for a custom project, prototype or collaboration.",
     socialsTitle: "Follow me",
     socialsText:
       "Find PhiVi Makes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
@@ -55,13 +46,11 @@ const text = {
 };
 
 export default function Home() {
-  const [lang, setLang] = useState<"el" | "en">("el");
+  const [lang, setLang] = useState<"el" | "en">("en");
   const t = text[lang];
+
   const projects = [...allProjects]
-    .sort(
-      (a, b) =>
-        new Date(b.date).getTime() - new Date(a.date).getTime()
-    )
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
   return (
@@ -72,14 +61,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(2,6,23,0.25),rgba(2,6,23,0.9))]" />
       </div>
 
-      <section
-        id="about"
-        className="relative z-10 min-h-screen px-6 py-8 md:px-12 lg:px-20"
-      >
+      <section id="about" className="relative z-10 min-h-screen px-6 py-8 md:px-12 lg:px-20">
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-cyan-400/25 bg-slate-950/45 px-5 py-4 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-xl">
           <Link href="/" className="text-xl font-black tracking-tight">
-           PHIVI
-            <span className="bg-gradient-to-r from-fuchsia-400 to-violet-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
+              PHIVI
+            </span>
+            <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">
               MAKES
             </span>
           </Link>
@@ -116,18 +104,8 @@ export default function Home() {
               {t.hero}
             </h2>
 
-            <div className="mt-8 grid gap-4">
-              <div className="rounded-[2rem] border border-cyan-300/20 bg-cyan-300/10 p-5 text-lg leading-8 text-slate-200">
-                {t.intro}
-              </div>
-
-              <div className="rounded-[2rem] border border-cyan-300/20 bg-slate-950/60 p-5 text-lg leading-8 text-slate-300">
-                {t.aboutText}
-              </div>
-
-              <div className="rounded-[2rem] border border-fuchsia-300/20 bg-fuchsia-400/10 p-5 text-lg leading-8 text-slate-300">
-                {t.goal}
-              </div>
+            <div className="mt-8 rounded-[2rem] border border-cyan-300/20 bg-cyan-300/10 p-5 text-lg leading-8 text-slate-200">
+              {t.intro}
             </div>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row">
@@ -136,6 +114,13 @@ export default function Home() {
                 className="rounded-full bg-cyan-300 px-7 py-4 text-center font-bold text-slate-950 shadow-[0_0_35px_rgba(103,232,249,0.45)] transition hover:bg-cyan-200"
               >
                 {t.viewProjects}
+              </Link>
+
+              <Link
+                href="/about"
+                className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-7 py-4 text-center font-bold text-cyan-200 transition hover:bg-cyan-300/20"
+              >
+                {t.moreAbout}
               </Link>
 
               <Link
@@ -153,10 +138,6 @@ export default function Home() {
 
             <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 animate-[float_6s_ease-in-out_infinite] rounded-[2rem] border border-cyan-300/50 bg-cyan-300/10 shadow-[0_0_90px_rgba(34,211,238,0.35)] backdrop-blur-xl md:h-80 md:w-80" />
 
-            <div className="absolute left-[28%] top-[32%] h-20 w-20 animate-[think_3s_ease-in-out_infinite] rounded-full border border-cyan-200/40 bg-cyan-300/15 shadow-[0_0_45px_rgba(34,211,238,0.35)]" />
-            <div className="absolute left-[44%] top-[22%] h-10 w-10 animate-[think_3s_ease-in-out_infinite_0.5s] rounded-full border border-fuchsia-200/40 bg-fuchsia-400/15 shadow-[0_0_35px_rgba(217,70,239,0.25)]" />
-            <div className="absolute left-[57%] top-[33%] h-14 w-14 animate-[think_3s_ease-in-out_infinite_1s] rounded-full border border-cyan-200/40 bg-cyan-300/15 shadow-[0_0_35px_rgba(34,211,238,0.3)]" />
-
             <div className="absolute bottom-[22%] left-1/2 h-28 w-44 -translate-x-1/2 rounded-[2rem] border border-cyan-300/40 bg-slate-900/70 shadow-[0_0_70px_rgba(34,211,238,0.25)] backdrop-blur-xl">
               <div className="absolute left-1/2 top-[-54px] h-20 w-20 -translate-x-1/2 rounded-full border border-cyan-300/40 bg-slate-900 shadow-[0_0_45px_rgba(34,211,238,0.25)]" />
               <div className="absolute left-1/2 top-[-28px] h-3 w-16 -translate-x-1/2 rounded-full bg-cyan-300/60" />
@@ -165,18 +146,8 @@ export default function Home() {
             </div>
 
             <div className="absolute right-3 top-16 rounded-2xl border border-cyan-300/20 bg-slate-950/60 p-4 backdrop-blur-xl">
-              <p className="text-xs text-slate-300">Layer height</p>
-              <p className="text-2xl font-black text-cyan-200">0.20mm</p>
-            </div>
-
-            <div className="absolute bottom-14 left-4 rounded-2xl border border-cyan-300/20 bg-slate-950/60 p-4 backdrop-blur-xl">
-              <p className="text-xs text-slate-300">Material</p>
-              <p className="text-2xl font-black text-cyan-200">PLA / PETG</p>
-            </div>
-
-            <div className="absolute bottom-6 right-8 rounded-2xl border border-cyan-300/20 bg-slate-950/60 p-4 backdrop-blur-xl">
-              <p className="text-xs text-slate-300">Status</p>
-              <p className="text-2xl font-black text-cyan-200">Thinking</p>
+              <p className="text-xs text-slate-300">Animation Space</p>
+              <p className="text-2xl font-black text-cyan-200">Coming Soon</p>
             </div>
           </div>
         </div>
@@ -192,7 +163,6 @@ export default function Home() {
             <p className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">
               {t.latestProjects}
             </p>
-
             <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
               {t.projectSubtitle}
             </p>
@@ -205,14 +175,20 @@ export default function Home() {
                 href={project.href}
                 className="group rounded-[2rem] border border-cyan-400/20 bg-slate-950/45 p-6 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300/60 hover:bg-cyan-300/10"
               >
-                <div className="mb-8 aspect-video rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/20 via-blue-500/10 to-violet-500/20" />
+                <div className="mb-8 overflow-hidden rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/20 via-blue-500/10 to-violet-500/20">
+                  {project.coverImage ? (
+                    <img
+                      src={project.coverImage}
+                      alt={project.title}
+                      className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="aspect-video w-full" />
+                  )}
+                </div>
 
-                <p className="text-sm font-semibold text-cyan-300">
-                  {project.type}
-                </p>
-
+                <p className="text-sm font-semibold text-cyan-300">{project.type}</p>
                 <h3 className="mt-3 text-2xl font-black">{project.title}</h3>
-
                 <p className="mt-5 text-slate-400 group-hover:text-slate-200">
                   Open project →
                 </p>
@@ -231,25 +207,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="relative z-10 px-6 py-20 md:px-12 lg:px-20"
-      >
+      <section id="contact" className="relative z-10 px-6 py-20 md:px-12 lg:px-20">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
           <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-300 p-8 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:p-12">
             <h2 className="text-4xl font-black tracking-tight md:text-6xl">
               {t.contactTitle}
             </h2>
-
-            <p className="mt-5 max-w-xl text-lg text-slate-800">
-              {t.contactText}
-            </p>
-
+            <p className="mt-5 max-w-xl text-lg text-slate-800">{t.contactText}</p>
             <a
-              href="mailto:phivimakes@gmail.com"
+              href="mailto:hello@phi-vi-makes.com"
               className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-bold text-white transition hover:bg-slate-800"
             >
-              phivimakes@gmail.com
+              hello@phi-vi-makes.com
             </a>
           </div>
 
@@ -257,14 +226,11 @@ export default function Home() {
             <h2 className="text-4xl font-black tracking-tight md:text-6xl">
               {t.socialsTitle}
             </h2>
-
-            <p className="mt-5 max-w-xl text-lg text-slate-800">
-              {t.socialsText}
-            </p>
+            <p className="mt-5 max-w-xl text-lg text-slate-800">{t.socialsText}</p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://www.instagram.com/phivimakes?igsh=ejRibTdrMm9sNXZk"
+                href="https://www.instagram.com/TO_INSTAGRAM_SOU"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
@@ -273,7 +239,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://www.tiktok.com/@phivimakes?_r=1&_d=ed9bb7kb0elhbe&sec_uid=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&share_author_id=7637309696769311766&sharer_language=en&source=h5_m&u_code=f3bd0c0i76gmch&timestamp=1778199841&user_id=7637309696769311766&sec_user_id=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7634100450640611094&share_link_id=41ab6d3a-91c3-4347-8a7a-b2381d7f6645&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1"
+                href="https://www.tiktok.com/@TO_TIKTOK_SOU"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
