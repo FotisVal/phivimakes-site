@@ -6,7 +6,6 @@ import { allProjects } from "@/data/projects";
 
 const text = {
   el: {
-    about: "ΣΧΕΤΙΚΑ",
     projects: "ΕΡΓΑ",
     hero: "Κατασκευές για καθημερινή χρήση.",
     intro:
@@ -25,7 +24,6 @@ const text = {
       "Βρες το PhiVi Makes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
   },
   en: {
-    about: "ABOUT",
     projects: "PROJECTS",
     hero: "Built for everyday use.",
     intro:
@@ -64,7 +62,7 @@ export default function Home() {
       <section id="about" className="relative z-10 min-h-screen px-6 py-8 md:px-12 lg:px-20">
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-cyan-400/25 bg-slate-950/45 px-5 py-4 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-xl">
           <Link href="/" className="text-xl font-black tracking-tight">
-            <span className="bg-gradient-to-r from-white via-cyan-200 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-100 via-cyan-300/80 to-white/70 bg-clip-text text-transparent">
               PHIVI
             </span>
             <span className="bg-gradient-to-r from-violet-400 to-purple-300 bg-clip-text text-transparent">
@@ -74,7 +72,7 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <div className="hidden gap-8 text-sm text-slate-300 md:flex">
-              <Link href="#about" className="hover:text-cyan-300">
+              <Link href="/about" className="hover:text-cyan-300">
                 {lang === "el" ? "Σχετικά" : "About"}
               </Link>
               <Link href="/projects" className="hover:text-cyan-300">
@@ -208,12 +206,16 @@ export default function Home() {
       </section>
 
       <section id="contact" className="relative z-10 px-6 py-20 md:px-12 lg:px-20">
-        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2">
-          <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-300 p-8 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:p-12">
+        <div className="mx-auto grid max-w-7xl overflow-hidden rounded-[2rem] border border-cyan-400/20 bg-cyan-300 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:grid-cols-2">
+          <div className="p-8 md:p-12">
             <h2 className="text-4xl font-black tracking-tight md:text-6xl">
               {t.contactTitle}
             </h2>
-            <p className="mt-5 max-w-xl text-lg text-slate-800">{t.contactText}</p>
+
+            <p className="mt-5 max-w-xl text-lg text-slate-800">
+              {t.contactText}
+            </p>
+
             <a
               href="mailto:hello@phi-vi-makes.com"
               className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-bold text-white transition hover:bg-slate-800"
@@ -222,15 +224,18 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="rounded-[2rem] border border-cyan-400/20 bg-cyan-300 p-8 text-slate-950 shadow-[0_0_60px_rgba(34,211,238,0.18)] md:p-12">
+          <div className="border-t border-slate-950/20 p-8 md:border-l md:border-t-0 md:p-12">
             <h2 className="text-4xl font-black tracking-tight md:text-6xl">
               {t.socialsTitle}
             </h2>
-            <p className="mt-5 max-w-xl text-lg text-slate-800">{t.socialsText}</p>
+
+            <p className="mt-5 max-w-xl text-lg text-slate-800">
+              {t.socialsText}
+            </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://www.instagram.com/TO_INSTAGRAM_SOU"
+                href="https://www.instagram.com/phivimakes?igsh=ejRibTdrMm9sNXZk"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
@@ -239,7 +244,7 @@ export default function Home() {
               </a>
 
               <a
-                href="https://www.tiktok.com/@TO_TIKTOK_SOU"
+                href="https://www.tiktok.com/@phivimakes?_r=1&_d=ed9bb7kb0elhbe&sec_uid=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&share_author_id=7637309696769311766&sharer_language=en&source=h5_m&u_code=f3bd0c0i76gmch&timestamp=1778199841&user_id=7637309696769311766&sec_user_id=MS4wLjABAAAAd0A_oC1ZKMAuyl_HpFvO_xGQQNFXSr4H0c3HyEKq-9trclc-lDZkOKjCY1O4Gh5w&item_author_type=1&utm_source=copy&utm_campaign=client_share&utm_medium=android&share_iid=7634100450640611094&share_link_id=41ab6d3a-91c3-4347-8a7a-b2381d7f6645&share_app_id=1233&ugbiz_name=ACCOUNT&ug_btm=b8727%2Cb7360&social_share_type=5&enable_checksum=1"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"

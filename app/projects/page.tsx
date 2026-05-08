@@ -40,6 +40,18 @@ export default function ProjectsPage() {
           PROJECTS
         </h1>
 
+        <div className="mt-6 flex justify-end">
+          <Link
+            href="/projects/all"
+            className="group inline-flex items-center gap-3 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-7 py-4 text-lg font-bold text-cyan-200 transition hover:border-cyan-300/60 hover:bg-cyan-300/20"
+          >
+            Show All Projects
+            <span className="transition group-hover:translate-x-1">
+              →
+            </span>
+          </Link>
+        </div>
+        
         <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
           Choose a category to explore the projects inside.
         </p>
