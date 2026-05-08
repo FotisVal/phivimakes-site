@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { latestProjects as projects } from "@/data/projects";
+import { allProjects } from "@/data/projects";
 
 const text = {
   el: {
