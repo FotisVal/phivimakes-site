@@ -92,10 +92,6 @@ export default function Home() {
           </div>
         </nav>
 
-        <h1 className="mx-auto mt-14 max-w-7xl text-6xl font-black leading-none tracking-tight text-cyan-100 md:text-8xl lg:text-9xl">
-          {t.about}
-        </h1>
-
         <div className="mx-auto mt-8 grid max-w-7xl items-center gap-14 rounded-[2.5rem] border border-cyan-400/20 bg-slate-950/45 p-7 shadow-[0_0_90px_rgba(34,211,238,0.12)] backdrop-blur-xl md:grid-cols-2 md:p-12">
           <div>
             <h2 className="max-w-3xl text-4xl font-black leading-[0.95] tracking-tight md:text-6xl">
