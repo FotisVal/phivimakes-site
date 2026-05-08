@@ -78,7 +78,10 @@ export default function Home() {
       >
         <nav className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-cyan-400/25 bg-slate-950/45 px-5 py-4 shadow-[0_0_50px_rgba(34,211,238,0.12)] backdrop-blur-xl">
           <Link href="/" className="text-xl font-black tracking-tight">
-            PHIVI<span className="text-cyan-300">MAKES</span>
+           PHIVI
+            <span className="bg-gradient-to-r from-fuchsia-400 to-violet-300 bg-clip-text text-transparent">
+              MAKES
+            </span>
           </Link>
 
           <div className="flex items-center gap-4">
