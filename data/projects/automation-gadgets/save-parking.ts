@@ -1,6 +1,6 @@
 import type { Project } from "@/data/projects";
 
-export const SaveParkingProject: Project = {
+export const saveParkingProject: Project = {
   title: "Αποθήκευση Πάρκινγκ",
   titleEn: "Save Parking",
 
