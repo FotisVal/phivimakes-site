@@ -77,5 +77,6 @@ export default function AboutPage() {
         </div>
       </div>
     </main>
+    const { lang, setLang } = useLanguage();
   );
 }
