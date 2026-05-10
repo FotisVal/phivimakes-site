@@ -25,8 +25,6 @@ export const SaveParkingProject: Project = {
 
   images: [
     "/projects/automation-gadgets/SaveParking/1.jpg",
-    "/projects/automation-gadgets/SaveParking/2.jpg",
-    "/projects/automation-gadgets/SaveParking/3.jpg",
   ],
 
   stlVersions: [
