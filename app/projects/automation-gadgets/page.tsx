@@ -1,39 +1,44 @@
 "use client";
 
 import Link from "next/link";
-import { allProjects } from "@/data/projects";
+
 import Navbar from "@/components/Navbar";
 import { useLanguage } from "@/components/LanguageProvider";
 
-const aquariumProjects = allProjects.filter(
-  (project) => project.category === "aquarium"
+import { allProjects } from "@/data/projects";
+
+const automationProjects = allProjects.filter(
+  (project) => project.category === "automation-gadgets"
 );
 
 const text = {
   en: {
-    title: "AQUARIUM",
+    title: "AUTOMATION GADGETS",
     subtitle:
-      "Functional 3D printed parts and decorative objects for aquarium setups.",
+      "Automation tools, smart mechanisms and useful everyday systems.",
     back: "← Back to projects",
     openProject: "Open project →",
   },
+
   el: {
-    title: "ΕΝΥΔΡΕΙΟ",
+    title: "AUTOMATION GADGETS",
     subtitle:
-      "Λειτουργικά 3D printed parts και διακοσμητικά αντικείμενα για aquarium setups.",
+      "Automation εργαλεία, smart μηχανισμοί και πρακτικά συστήματα καθημερινής χρήσης.",
     back: "← Πίσω στα έργα",
     openProject: "Άνοιγμα project →",
   },
 };
 
-export default function AquariumPage() {
+export default function AutomationPage() {
   const { lang } = useLanguage();
+
   const t = text[lang];
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,255,0.055)_1px,transparent_1px)] bg-[size:42px_42px]" />
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(6,182,212,0.24),transparent_34%),radial-gradient(circle_at_70%_78%,rgba(59,130,246,0.22),transparent_38%)]" />
       </div>
 
@@ -41,7 +46,10 @@ export default function AquariumPage() {
         <Navbar />
 
         <div className="mx-auto mt-14 max-w-7xl">
-          <Link href="/projects" className="text-cyan-300 hover:text-cyan-200">
+          <Link
+            href="/projects"
+            className="text-cyan-300 hover:text-cyan-200"
+          >
             {t.back}
           </Link>
 
@@ -54,7 +62,7 @@ export default function AquariumPage() {
           </p>
 
           <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {aquariumProjects.map((project) => (
+            {automationProjects.map((project) => (
               <Link
                 key={project.href}
                 href={project.href}
@@ -73,7 +81,9 @@ export default function AquariumPage() {
                 </p>
 
                 <h2 className="mt-3 text-3xl font-black text-cyan-100">
-                  {lang === "el" ? project.title : project.titleEn}
+                  {lang === "el"
+                    ? project.title
+                    : project.titleEn}
                 </h2>
 
                 <p className="mt-4 text-lg leading-8 text-slate-300">
