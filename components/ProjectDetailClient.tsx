@@ -25,7 +25,7 @@ export default function ProjectDetailClient({
 
   const text = {
     en: {
-      back: "← Back to Aquarium",
+      back: "← Back to",
       preview: "3D Preview",
       details: "Project Details",
       gallery: "Gallery",
@@ -33,7 +33,7 @@ export default function ProjectDetailClient({
     },
 
     el: {
-      back: "← Πίσω στο Aquarium",
+      back: "← Πίσω στο",
       preview: "3D Preview",
       details: "Λεπτομέρειες Project",
       gallery: "Gallery",
@@ -56,10 +56,13 @@ export default function ProjectDetailClient({
 
         <div className="mx-auto mt-14 max-w-6xl">
           <Link
-            href="/projects/aquarium"
-            className="text-cyan-300 hover:text-cyan-200"
+            href={`/projects/${project.category}`}
+         className="text-cyan-300 hover:text-cyan-200"
           >
-            {t.back}
+            {t.back}{" "}
+          {project.category
+            .replace("-", " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase())}
           </Link>
 
           <p className="mt-12 text-sm font-bold uppercase tracking-[0.25em] text-cyan-300">

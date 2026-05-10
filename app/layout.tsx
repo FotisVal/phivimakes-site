@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PhiViMakes",
+  title: "Phivimakes",
   description: "3D printing, custom builds and everyday useful designs.",
 };
 

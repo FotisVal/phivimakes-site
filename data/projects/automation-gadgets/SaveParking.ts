@@ -1,16 +1,16 @@
 import type { Project } from "@/data/projects";
 
 export const SaveParkingProject: Project = {
-  title: "Βάση Ποτηριού",
-  titleEn: "Cup Holder",
+  title: "Αποθήκευση Πάρκινγκ",
+  titleEn: "Save Parking",
 
-  type: "Mini Cooper",
+  type: "automation-gadgets",
 
-  category: "mini-cooper",
+  category: "automation-gadgets",
 
-  slug: "cup-holder",
+  slug: "save-parking",
 
-  href: "/projects/mini-cooper/cup-holder",
+  href: "/projects/automation-gadgets/save-parking",
 
   date: "2026-05-10",
 
@@ -21,12 +21,12 @@ export const SaveParkingProject: Project = {
     "Custom βάση ποτηριού για Mini Cooper με στόχο καλύτερη σταθερότητα και εργονομία.",
 
   coverImage:
-    "/projects/mini-cooper/cup-holder/cover.jpg",
+    "/projects/automation-gadgets/SaveParking/cover.jpg",
 
   images: [
-    "/projects/mini-cooper/cup-holder/1.jpg",
-    "/projects/mini-cooper/cup-holder/2.jpg",
-    "/projects/mini-cooper/cup-holder/3.jpg",
+    "/projects/automation-gadgets/SaveParking/1.jpg",
+    "/projects/automation-gadgets/SaveParking/2.jpg",
+    "/projects/automation-gadgets/SaveParking/3.jpg",
   ],
 
   stlVersions: [
@@ -34,7 +34,7 @@ export const SaveParkingProject: Project = {
       label: "Standard",
 
       file:
-        "/models/mini-cooper/cup-holder.stl",
+        "/models/automation-gadgets/SaveParking/CASING_NFC_CAR_V3.stl",
 
       descriptionEl:
         "Η standard έκδοση της βάσης ποτηριού.",
@@ -43,17 +43,17 @@ export const SaveParkingProject: Project = {
         "The standard version of the cup holder.",
     },
 
-    {
+    /*{
       label: "Wide",
 
       file:
-        "/models/mini-cooper/CASING_NFC_CAR_V3.stl",
+        "/models/automation-gadgets/CASING_NFC_CAR_V3.stl",
 
       descriptionEl:
         "Η Wide έκδοση προσφέρει μεγαλύτερη διάμετρο.",
 
       descriptionEn:
         "The Wide version supports larger cups.",
-    },
+    },*/
   ],
 };
