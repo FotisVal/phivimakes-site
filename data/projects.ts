@@ -1,5 +1,5 @@
 import { lagoumiProject } from "@/data/projects/aquarium/lagoumi";
-import { saveParkingProject } from "@/data/projects/save-parking";
+import { saveParkingProject } from "@/data/projects/automation-gadgets/SaveParking";
 
 export type Project = {
   title: string;
