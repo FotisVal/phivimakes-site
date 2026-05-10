@@ -21,7 +21,7 @@ const text = {
     contactText: "Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.",
     socialsTitle: "Ακολούθησέ με",
     socialsText:
-      "Βρες το PhiVi Makes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
+      "Βρες το phivimakes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
   },
   en: {
     projects: "PROJECTS",
@@ -39,7 +39,7 @@ const text = {
     contactText: "Send me a message for a custom project, prototype or collaboration.",
     socialsTitle: "Follow me",
     socialsText:
-      "Find PhiVi Makes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
+      "Find phivimakes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
   },
 };
 
