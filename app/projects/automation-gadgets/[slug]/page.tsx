@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-
 import { allProjects } from "@/data/projects";
-
 import ProjectDetailClient from "@/components/ProjectDetailClient";
 
 const automationProjects = allProjects.filter(
@@ -20,15 +18,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-
-  const project = automationProjects.find(
-    (item) => item.slug === slug
-  );
+  const project = automationProjects.find((item) => item.slug === slug);
 
   return {
-    title: project
-      ? `${project.titleEn} · PhiViMakes`
-      : "PhiViMakes",
+    title: project ? `${project.titleEn} · PhiViMakes` : "PhiViMakes",
   };
 }
 
@@ -38,10 +31,7 @@ export default async function AutomationProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-
-  const project = automationProjects.find(
-    (item) => item.slug === slug
-  );
+  const project = automationProjects.find((item) => item.slug === slug);
 
   if (!project) {
     return <div>Project not found</div>;
