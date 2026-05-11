@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About · PhiViMakes",
+  title: "About · Phivimakes",
 };
 
 export default function AboutLayout({

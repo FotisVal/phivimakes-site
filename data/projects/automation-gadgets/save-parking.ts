@@ -4,24 +4,20 @@ export const saveParkingProject: Project = {
   title: "Αποθήκευση Πάρκινγκ",
   titleEn: "Save Parking",
 
-  type: "automation-gadgets",
-
+  type: "Automation Gadgets",
   category: "automation-gadgets",
-
   slug: "save-parking",
-
   href: "/projects/automation-gadgets/save-parking",
 
   date: "2026-05-10",
 
   shortDescription:
-    "Custom Mini Cooper cup holder designed for better stability and everyday usability.",
+    "A practical automation gadget designed to help with parking positioning and everyday usability.",
 
   description:
-    "Custom βάση ποτηριού για Mini Cooper με στόχο καλύτερη σταθερότητα και εργονομία.",
+    "Το Save Parking είναι ένα πρακτικό automation gadget που δημιουργήθηκε για να βοηθάει στην καθημερινή χρήση του parking. Στόχος του project είναι να δώσει μια απλή, καθαρή και λειτουργική λύση σε ένα επαναλαμβανόμενο πρόβλημα, με custom σχεδιασμό και δυνατότητα προσαρμογής.",
 
-  coverImage:
-    "/projects/automation-gadgets/SaveParking/cover.jpg",
+  coverImage: "/projects/automation-gadgets/SaveParking/cover.jpg",
 
   images: [
     "/projects/automation-gadgets/SaveParking/1.jpg",
@@ -30,28 +26,11 @@ export const saveParkingProject: Project = {
   stlVersions: [
     {
       label: "Standard",
-
-      file:
-        "/models/automation-gadgets/SaveParking/CASING_NFC_CAR_V3.stl",
-
+      file: "/models/automation-gadgets/SaveParking/CASING_NFC_CAR_V3.STL",
       descriptionEl:
-        "Η standard έκδοση της βάσης ποτηριού.",
-
+        "Η Standard έκδοση του Save Parking είναι η βασική μορφή του project. Περιλαμβάνει το κύριο casing και είναι σχεδιασμένη ως πρακτική και καθαρή λύση για καθημερινή χρήση.",
       descriptionEn:
-        "The standard version of the cup holder.",
+        "The Standard version of Save Parking is the base form of the project. It includes the main casing and is designed as a practical, clean solution for everyday use.",
     },
-
-    /*{
-      label: "Wide",
-
-      file:
-        "/models/automation-gadgets/CASING_NFC_CAR_V3.stl",
-
-      descriptionEl:
-        "Η Wide έκδοση προσφέρει μεγαλύτερη διάμετρο.",
-
-      descriptionEn:
-        "The Wide version supports larger cups.",
-    },*/
   ],
 };

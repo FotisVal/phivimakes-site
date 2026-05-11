@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All Projects · PhiViMakes",
+  title: "All Projects · Phivimakes",
 };
 
 export default function AllProjectsLayout({

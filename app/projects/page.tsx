@@ -22,27 +22,27 @@ const text = {
 
 const categories = [
   {
-    title: "Mini Cooper",
-    description: "Custom parts, accessories and upgrades.",
-    href: "/projects/mini-cooper",
-  },
-
-  {
     title: "Aquarium",
     description: "Functional 3D printed parts for aquarium setups.",
     href: "/projects/aquarium",
   },
 
   {
-    title: "Traditional Shaving",
-    description: "Stands, holders and shaving accessories.",
-    href: "/projects/traditional-shaving",
-  },
-
-  {
     title: "Automation Gadgets",
     description: "Useful automation ideas and smart mechanisms.",
     href: "/projects/automation-gadgets",
+  },
+
+  {
+    title: "Mini Cooper",
+    description: "Custom parts, accessories and upgrades.",
+    href: "/projects/mini-cooper",
+  },
+
+  {
+    title: "Traditional Shaving",
+    description: "Stands, holders and shaving accessories.",
+    href: "/projects/traditional-shaving",
   },
 ];
 

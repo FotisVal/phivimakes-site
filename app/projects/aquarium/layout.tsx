@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Aquarium · PhiViMakes",
+  title: "Aquarium · Phivimakes",
 };
 
 export default function AquariumLayout({

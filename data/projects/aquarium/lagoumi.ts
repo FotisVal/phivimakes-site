@@ -7,7 +7,7 @@ export const lagoumiProject: Project = {
   category: "aquarium",
   slug: "lagoumi",
   href: "/projects/aquarium/lagoumi",
-  date: "2026-05-08",
+  date: "2026-05-25",
 
   shortDescription:
     "Custom aquarium cave for fish shelter and aquascaping.",

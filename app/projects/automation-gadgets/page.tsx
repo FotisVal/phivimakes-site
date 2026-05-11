@@ -13,7 +13,7 @@ const automationProjects = allProjects.filter(
 
 const text = {
   en: {
-    title: "AUTOMATION GADGETS",
+    title: "Automation Gadgets",
     subtitle:
       "Automation tools, smart mechanisms and useful everyday systems.",
     back: "← Back to projects",
@@ -21,7 +21,7 @@ const text = {
   },
 
   el: {
-    title: "AUTOMATION GADGETS",
+    title: "Automation Gadgets",
     subtitle:
       "Automation εργαλεία, smart μηχανισμοί και πρακτικά συστήματα καθημερινής χρήσης.",
     back: "← Πίσω στα έργα",

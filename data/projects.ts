@@ -1,5 +1,10 @@
 import { lagoumiProject } from "@/data/projects/aquarium/lagoumi";
 import { saveParkingProject } from "@/data/projects/automation-gadgets/save-parking";
+import { fobKeyProject } from "@/data/projects/mini-cooper/fobkey";
+import { excaliburProject } from "@/data/projects/traditional-shaving/excalibur";
+import { doubleStandProject } from "@/data/projects/traditional-shaving/double-stand";
+
+
 
 export type Project = {
   title: string;
@@ -24,4 +29,7 @@ export type Project = {
 export const allProjects: Project[] = [
   lagoumiProject,
   saveParkingProject,
+  fobKeyProject,
+  excaliburProject,
+  doubleStandProject,
 ];

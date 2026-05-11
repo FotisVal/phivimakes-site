@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Automation Gadgets · PhiViMakes",
+  title: "Automation Gadgets · Phivimakes",
 };
 
 export default function AutomationLayout({
