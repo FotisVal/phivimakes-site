@@ -26,7 +26,7 @@ export const saveParkingProject: Project = {
   stlVersions: [
     {
       label: "Standard",
-      file: "/models/automation-gadgets/SaveParking/CASING_NFC_CAR_V3.STL",
+      file: "/models/automation-gadgets/SaveParking/CASING_NFC_CAR_V3.stl",
       descriptionEl:
         "Η Standard έκδοση του Save Parking είναι η βασική μορφή του project. Περιλαμβάνει το κύριο casing και είναι σχεδιασμένη ως πρακτική και καθαρή λύση για καθημερινή χρήση.",
       descriptionEn:
