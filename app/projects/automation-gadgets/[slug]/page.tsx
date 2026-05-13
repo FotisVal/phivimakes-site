@@ -21,7 +21,7 @@ export async function generateMetadata({
   const project = automationProjects.find((item) => item.slug === slug);
 
   return {
-    title: project ? `${project.titleEn} · PhiViMakes` : "PhiViMakes",
+    title: project ? `${project.titleEn} · Phivimakes` : "Phivimakes",
   };
 }
 
