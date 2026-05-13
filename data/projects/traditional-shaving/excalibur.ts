@@ -20,7 +20,7 @@ export const excaliburProject: Project = {
   description:
     "Το Excalibur είναι μια βάση ξυραφιού εμπνευσμένη από το θρυλικό ξίφος στον βράχο. Το ξυράφι τοποθετείται μέσα στον βράχο σαν να είναι το ίδιο το Excalibur, δημιουργώντας ένα ιδιαίτερο διακοσμητικό και λειτουργικό αντικείμενο για traditional shaving setups. Στόχος του project είναι να συνδυάσει πρακτικότητα, θεματικό design και μια πιο συλλεκτική αίσθηση στον χώρο του ξυρίσματος.",
 
-  coverImage: "/projects/traditional-shaving/excalibur/cover.jpg",
+  coverImage: "/projects/traditional-shaving/excalibur/cover-generated.jpg",
 
   images: [
     "/projects/traditional-shaving/excalibur/1.jpg",

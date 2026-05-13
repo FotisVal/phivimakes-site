@@ -20,7 +20,7 @@ export const doubleStandProject: Project = {
   description:
     "Ο Καλόγερος Ξυριστικών είναι μια διπλή βάση για traditional shaving εργαλεία, σχεδιασμένη ώστε να κρατάει τα ξυριστικά οργανωμένα, σταθερά και ευπαρουσίαστα. Η ιδέα είναι να υπάρχει ένα πρακτικό αλλά και όμορφο αντικείμενο που να ταιριάζει σε ένα shaving setup, δίνοντας χώρο για δύο εργαλεία ή συνδυασμό ξυραφιού και αξεσουάρ.",
 
-  coverImage: "/projects/traditional-shaving/double-stand/cover.jpg",
+  coverImage: "/projects/traditional-shaving/double-stand/cover-generated.jpg",
 
   images: [
     "/projects/traditional-shaving/double-stand/1.jpg",
