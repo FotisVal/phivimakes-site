@@ -17,7 +17,7 @@ export const saveParkingProject: Project = {
   description:
     "Το Save Parking είναι ένα πρακτικό automation gadget που δημιουργήθηκε για να βοηθάει στην καθημερινή χρήση του parking. Στόχος του project είναι να δώσει μια απλή, καθαρή και λειτουργική λύση σε ένα επαναλαμβανόμενο πρόβλημα, με custom σχεδιασμό και δυνατότητα προσαρμογής.",
 
-  coverImage: "/projects/automation-gadgets/SaveParking/cover.jpg",
+  coverImage: "/projects/automation-gadgets/SaveParking/cover-generated.jpg",
 
   images: [
     "/projects/automation-gadgets/SaveParking/1.jpg",

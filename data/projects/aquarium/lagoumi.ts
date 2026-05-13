@@ -15,7 +15,7 @@ export const lagoumiProject: Project = {
   description:
     "Το Λαγούμι είναι μια 3D printed κατασκευή για ενυδρείο, σχεδιασμένη ώστε να προσφέρει κρυψώνα στα ψάρια και να ενσωματώνεται όμορφα στο aquascape.",
 
-  coverImage: "/projects/aquarium/lagoumi/cover.jpg",
+  coverImage: "/projects/aquarium/lagoumi/cover-generated.jpg",
 
   images: [
     "/projects/aquarium/lagoumi/1.jpg",

@@ -20,7 +20,7 @@ export const fobKeyProject: Project = {
   description:
     "Το FobKey είναι ένα πλαστικό προστατευτικό κάλυμμα για κλειδί Mini Cooper 3ης γενιάς, κατάλληλο για μοντέλα περίπου 2017-2025. Σχεδιάστηκε για να προστατεύει το κλειδί στην καθημερινή χρήση, να δίνει καλύτερο κράτημα και να προσφέρει δυνατότητα εξατομίκευσης με διαφορετικά σχέδια ή engraving.",
 
-  coverImage: "/projects/mini-cooper/fobkey/cover.jpg",
+  coverImage: "/projects/mini-cooper/fobkey/cover-generated.jpg",
 
   images: [
     "/projects/mini-cooper/fobkey/1.jpg",

@@ -4,158 +4,190 @@ const sharp = require("sharp");
 
 const ROOT = process.cwd();
 
-const projects = [
-  {
-    title: "Save Parking",
-    category: "Automation Gadgets",
-    input: "public/projects/automation-gadgets/SaveParking/cover.jpg",
-    output: "public/projects/automation-gadgets/SaveParking/cover-generated.jpg",
-  },
-  {
-    title: "FobKey",
-    category: "Mini Cooper",
-    input: "public/projects/mini-cooper/fobkey/cover.jpg",
-    output: "public/projects/mini-cooper/fobkey/cover-generated.jpg",
-  },
-  {
-    title: "Excalibur",
-    category: "Traditional Shaving",
-    input: "public/projects/traditional-shaving/excalibur/cover.jpg",
-    output: "public/projects/traditional-shaving/excalibur/cover-generated.jpg",
-  },
-  {
-    title: "Double Stand",
-    category: "Traditional Shaving",
-    input: "public/projects/traditional-shaving/double-stand/cover.jpg",
-    output: "public/projects/traditional-shaving/double-stand/cover-generated.jpg",
-  },
-];
+const PROJECTS_DIR = path.join(ROOT, "public", "projects");
+const LOGO_PATH = path.join(ROOT, "public", "branding", "logo.png");
 
 const WIDTH = 1920;
 const HEIGHT = 1080;
 
-function escapeXml(text) {
-  return String(text)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+const BRAND_NAME = "phivimakes";
+
+// Neon ΜΟΝΟ για το πλαίσιο
+const FRAME_NEON_1 = "#67e8f9";
+const FRAME_NEON_2 = "#22d3ee";
+
+// Flat γαλάζιο για το κείμενο phivimakes, χωρίς neon/glow
+const BRAND_FLAT_1 = "#3B82F6";
+const BRAND_FLAT_2 = "#22D3EE";
+
+function walk(dir) {
+  let results = [];
+
+  if (!fs.existsSync(dir)) {
+    return results;
+  }
+
+  const list = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of list) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      results = results.concat(walk(fullPath));
+    } else {
+      results.push(fullPath);
+    }
+  }
+
+  return results;
 }
 
-function makeOverlaySvg({ title, category }) {
+function findCoverFiles() {
+  const allFiles = walk(PROJECTS_DIR);
+
+  return allFiles.filter((file) => {
+    const base = path.basename(file).toLowerCase();
+
+    return (
+      base === "cover.jpg" ||
+      base === "cover.jpeg" ||
+      base === "cover.png"
+    );
+  });
+}
+
+async function fileExists(filePath) {
+  try {
+    await fs.promises.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function makeBaseOverlaySvg() {
   return `
   <svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(2,6,23,0)" />
-        <stop offset="100%" stop-color="rgba(2,6,23,0.88)" />
+      <radialGradient id="glow1" cx="18%" cy="18%" r="32%">
+        <stop offset="0%" stop-color="rgba(0,217,255,0.18)" />
+        <stop offset="100%" stop-color="rgba(0,217,255,0)" />
+      </radialGradient>
+
+      <radialGradient id="glow2" cx="82%" cy="78%" r="34%">
+        <stop offset="0%" stop-color="rgba(59,130,246,0.14)" />
+        <stop offset="100%" stop-color="rgba(59,130,246,0)" />
+      </radialGradient>
+
+      <linearGradient id="fadeBottom" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(2,6,23,0.05)" />
+        <stop offset="62%" stop-color="rgba(2,6,23,0.18)" />
+        <stop offset="100%" stop-color="rgba(2,6,23,0.72)" />
+      </linearGradient>
+    </defs>
+
+    <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow1)" />
+    <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow2)" />
+    <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#fadeBottom)" />
+  </svg>
+  `;
+}
+
+function makeNeonFrameSvg() {
+  return `
+  <svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="frameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="${FRAME_NEON_1}" />
+        <stop offset="100%" stop-color="${FRAME_NEON_2}" />
       </linearGradient>
 
-      <linearGradient id="cyanGlow" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#00d9ff" />
-        <stop offset="100%" stop-color="#3b82f6" />
-      </linearGradient>
-
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <filter id="neonGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="5" result="blur1"/>
+        <feGaussianBlur stdDeviation="2" result="blur2"/>
         <feMerge>
-          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="blur1"/>
+          <feMergeNode in="blur2"/>
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
     </defs>
 
-    <rect x="0" y="0" width="${WIDTH}" height="${HEIGHT}" fill="url(#bottomFade)" />
-
-    <rect x="42" y="42" width="${WIDTH - 84}" height="${HEIGHT - 84}" rx="54"
+    <rect
+      x="38"
+      y="38"
+      width="${WIDTH - 76}"
+      height="${HEIGHT - 76}"
+      rx="52"
       fill="none"
-      stroke="rgba(0,217,255,0.55)"
+      stroke="url(#frameGradient)"
       stroke-width="3"
-      filter="url(#glow)"
+      filter="url(#neonGlow)"
     />
-
-    <rect x="72" y="${HEIGHT - 230}" width="520" height="74" rx="37"
-      fill="rgba(0,217,255,0.13)"
-      stroke="rgba(0,217,255,0.55)"
-      stroke-width="2"
-    />
-
-    <text x="108" y="${HEIGHT - 181}"
-      font-family="Arial, Helvetica, sans-serif"
-      font-size="34"
-      font-weight="800"
-      fill="#67e8f9"
-      letter-spacing="3">
-      ${escapeXml(category).toUpperCase()}
-    </text>
-
-    <text x="72" y="${HEIGHT - 82}"
-      font-family="Arial, Helvetica, sans-serif"
-      font-size="92"
-      font-weight="900"
-      fill="#ffffff"
-      letter-spacing="-2">
-      ${escapeXml(title)}
-    </text>
-
-    <text x="${WIDTH - 72}" y="${HEIGHT - 82}"
-      text-anchor="end"
-      font-family="Arial, Helvetica, sans-serif"
-      font-size="44"
-      font-weight="900"
-      fill="#22d3ee">
-      phivimakes
-    </text>
-
-    <circle cx="${WIDTH - 118}" cy="104" r="42"
-      fill="rgba(0,217,255,0.12)"
-      stroke="rgba(0,217,255,0.6)"
-      stroke-width="3"
-      filter="url(#glow)"
-    />
-
-    <text x="${WIDTH - 118}" y="120"
-      text-anchor="middle"
-      font-family="Arial, Helvetica, sans-serif"
-      font-size="38"
-      font-weight="900"
-      fill="#67e8f9">
-      3D
-    </text>
-  </svg>`;
+  </svg>
+  `;
 }
 
-async function generateCover(project) {
-  const inputPath = path.join(ROOT, project.input);
-  const outputPath = path.join(ROOT, project.output);
+function createBrandTextSvg() {
+  return Buffer.from(`
+    <svg width="${WIDTH}" height="${HEIGHT}" viewBox="0 0 ${WIDTH} ${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="brandTextGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${BRAND_FLAT_1}" />
+          <stop offset="100%" stop-color="${BRAND_FLAT_2}" />
+        </linearGradient>
+      </defs>
 
-  if (!fs.existsSync(inputPath)) {
-    console.log(`SKIP: Missing input: ${project.input}`);
-    return;
-  }
+      <text
+        x="${WIDTH - 70}"
+        y="${HEIGHT - 70}"
+        text-anchor="end"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="54"
+        font-weight="800"
+        fill="url(#brandTextGradient)"
+        letter-spacing="1"
+      >
+        ${BRAND_NAME}
+      </text>
+    </svg>
+  `);
+}
 
-  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+// Αυτό κρατάει το logo ΑΚΡΙΒΩΣ όπως είναι στο public/branding/logo.png
+// Δεν του αλλάζει χρώμα, δεν του βάζει gradient, δεν του βάζει neon.
+async function createLogoBuffer(logoPath, maxSize = 150) {
+  return sharp(logoPath)
+    .resize({
+      width: maxSize,
+      height: maxSize,
+      fit: "contain",
+      withoutEnlargement: true,
+    })
+    .png()
+    .toBuffer();
+}
 
-  const image = sharp(inputPath);
-  const metadata = await image.metadata();
+async function generateOneCover(inputPath) {
+  const dir = path.dirname(inputPath);
+  const outputPath = path.join(dir, "cover-generated.jpg");
+
+  console.log(`Processing: ${path.relative(ROOT, inputPath)}`);
 
   const background = await sharp(inputPath)
     .resize(WIDTH, HEIGHT, {
       fit: "cover",
       position: "center",
     })
-    .blur(28)
+    .blur(30)
     .modulate({
-      brightness: 0.45,
-      saturation: 1.18,
+      brightness: 0.42,
+      saturation: 1.14,
     })
     .toBuffer();
 
-  const foregroundMaxWidth = Math.round(WIDTH * 0.82);
-  const foregroundMaxHeight = Math.round(HEIGHT * 0.72);
-
   const foreground = await sharp(inputPath)
-    .resize(foregroundMaxWidth, foregroundMaxHeight, {
+    .resize(Math.round(WIDTH * 0.82), Math.round(HEIGHT * 0.72), {
       fit: "inside",
       withoutEnlargement: false,
     })
@@ -163,15 +195,83 @@ async function generateCover(project) {
 
   const fgMeta = await sharp(foreground).metadata();
 
-  const left = Math.round((WIDTH - fgMeta.width) / 2);
-  const top = Math.round((HEIGHT - fgMeta.height) / 2 - 50);
+  const fgLeft = Math.round((WIDTH - fgMeta.width) / 2);
+  const fgTop = Math.round((HEIGHT - fgMeta.height) / 2);
 
-  const overlay = Buffer.from(
-    makeOverlaySvg({
-      title: project.title,
-      category: project.category,
-    })
-  );
+  const baseOverlay = Buffer.from(makeBaseOverlaySvg());
+  const neonFrame = Buffer.from(makeNeonFrameSvg());
+  const brandText = createBrandTextSvg();
+
+  const composites = [
+    {
+      input: background,
+      left: 0,
+      top: 0,
+    },
+    {
+      input: Buffer.from(`
+        <svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="centerGlow" cx="50%" cy="48%" r="45%">
+              <stop offset="0%" stop-color="rgba(0,217,255,0.18)" />
+              <stop offset="100%" stop-color="rgba(0,217,255,0)" />
+            </radialGradient>
+
+            <linearGradient id="vignette" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.25)" />
+              <stop offset="50%" stop-color="rgba(0,0,0,0)" />
+              <stop offset="100%" stop-color="rgba(0,0,0,0.28)" />
+            </linearGradient>
+          </defs>
+
+          <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#centerGlow)" />
+          <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#vignette)" />
+        </svg>
+      `),
+      left: 0,
+      top: 0,
+    },
+    {
+      input: foreground,
+      left: fgLeft,
+      top: fgTop,
+    },
+    {
+      input: baseOverlay,
+      left: 0,
+      top: 0,
+    },
+    {
+      input: neonFrame,
+      left: 0,
+      top: 0,
+    },
+  ];
+
+  if (await fileExists(LOGO_PATH)) {
+    const logo = await createLogoBuffer(LOGO_PATH, 150);
+    const logoMeta = await sharp(logo).metadata();
+
+    composites.push({
+      input: logo,
+      left: 70,
+      top: HEIGHT - logoMeta.height - 52,
+    });
+  } else {
+    console.log(
+      `Logo not found. Put your logo here: ${path.relative(ROOT, LOGO_PATH)}`
+    );
+  }
+
+  composites.push({
+    input: brandText,
+    left: 0,
+    top: 0,
+  });
+
+  if (await fileExists(outputPath)) {
+    await fs.promises.unlink(outputPath);
+  }
 
   await sharp({
     create: {
@@ -181,39 +281,35 @@ async function generateCover(project) {
       background: "#020617",
     },
   })
-    .composite([
-      { input: background, left: 0, top: 0 },
-      {
-        input: Buffer.from(`
-          <svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="glow" cx="50%" cy="45%" r="45%">
-                <stop offset="0%" stop-color="rgba(0,217,255,0.28)" />
-                <stop offset="100%" stop-color="rgba(0,217,255,0)" />
-              </radialGradient>
-            </defs>
-            <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow)" />
-          </svg>
-        `),
-        left: 0,
-        top: 0,
-      },
-      { input: foreground, left, top },
-      { input: overlay, left: 0, top: 0 },
-    ])
+    .composite(composites)
     .jpeg({
       quality: 92,
       progressive: true,
     })
     .toFile(outputPath);
 
-  console.log(`DONE: ${project.output}`);
+  console.log(`Generated: ${path.relative(ROOT, outputPath)}`);
 }
 
 async function run() {
-  for (const project of projects) {
-    await generateCover(project);
+  if (!(await fileExists(PROJECTS_DIR))) {
+    throw new Error(`Projects folder not found: ${PROJECTS_DIR}`);
   }
+
+  const covers = findCoverFiles();
+
+  if (covers.length === 0) {
+    console.log("No cover files found.");
+    return;
+  }
+
+  console.log(`Found ${covers.length} cover file(s).`);
+
+  for (const cover of covers) {
+    await generateOneCover(cover);
+  }
+
+  console.log("Done.");
 }
 
 run().catch((error) => {
