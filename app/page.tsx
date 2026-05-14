@@ -173,10 +173,10 @@ export default function Home() {
               {t.contactText}
             </p>
             <a
-              href="mailto:hello@phi-vi-makes.com"
+              href="mailto: phivimakes@gmail.com"
               className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-bold text-white transition hover:bg-slate-800"
             >
-              hello@phi-vi-makes.com
+              help@phivimakes.com
             </a>
           </div>
 
@@ -190,7 +190,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="https://www.instagram.com/TO_INSTAGRAM_SOU"
+                href="https://www.instagram.com/phivimakes?igsh=ejRibTdrMm9sNXZk"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
@@ -198,7 +198,7 @@ export default function Home() {
                 Instagram
               </a>
               <a
-                href="https://www.tiktok.com/@TO_TIKTOK_SOU"
+                href="https://www.tiktok.com/@phivimakes?_r=1&_t=ZN-96M853AqklT"
                 target="_blank"
                 rel="noreferrer"
                 className="rounded-full bg-slate-950 px-7 py-4 text-center font-bold text-white transition hover:bg-slate-800"
