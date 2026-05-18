@@ -15,6 +15,7 @@ export type Project = {
   href: string;
   date: string;
   shortDescription: string;
+  shortDescriptionEn: string;
   description: string;
   coverImage: string;
   images: string[];

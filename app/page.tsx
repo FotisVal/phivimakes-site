@@ -16,13 +16,13 @@ const text = {
     contactMe: "Επικοινωνία",
     latestProjects: "Πρόσφατα έργα",
     projectSubtitle:
-      "Τα τρία πιο πρόσφατα projects από custom κατασκευές, prototypes και 3D printed λύσεις.",
+      "Τα τρία πιο πρόσφατα projects.",
     more: "Περισσότερα →",
     contactTitle: "Έχεις μια ιδέα;",
     contactText: "Στείλε μου μήνυμα για custom project, prototype ή συνεργασία.",
     socialsTitle: "Ακολούθησέ με",
     socialsText:
-      "Βρες το PhiVi Makes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
+      "Βρες το phivimakes σε Instagram και TikTok για νέα builds, prototypes και behind the scenes.",
   },
   en: {
     projects: "PROJECTS",
@@ -34,13 +34,13 @@ const text = {
     contactMe: "Contact",
     latestProjects: "Latest Projects",
     projectSubtitle:
-      "The three latest custom builds, prototypes and 3D printed solutions.",
+      "The three latest custom builds.",
     more: "More →",
     contactTitle: "Have an idea?",
     contactText: "Send me a message for a custom project, prototype or collaboration.",
     socialsTitle: "Follow me",
     socialsText:
-      "Find PhiVi Makes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
+      "Find phivimakes on Instagram and TikTok for new builds, prototypes and behind the scenes.",
   },
 };
 

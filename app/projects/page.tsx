@@ -10,6 +10,7 @@ const text = {
     subtitle:
       "Browse all categories and explore functional builds, prototypes and custom designs.",
     showAll: "Show All Projects →",
+    openCategory: "Open category →",
   },
 
   el: {
@@ -17,39 +18,73 @@ const text = {
     subtitle:
       "Δες όλες τις κατηγορίες και εξερεύνησε custom κατασκευές, prototypes και λειτουργικά designs.",
     showAll: "Όλα τα Projects →",
+    openCategory: "Άνοιγμα κατηγορίας →",
   },
 };
 
-const categories = [
-  {
-    title: "Aquarium",
-    description: "Functional 3D printed parts for aquarium setups.",
-    href: "/projects/aquarium",
-  },
+const categories = {
+  en: [
+    {
+      title: "Aquarium",
+      description: "Functional 3D printed parts for aquarium setups.",
+      href: "/projects/aquarium",
+    },
 
-  {
-    title: "Automation Gadgets",
-    description: "Useful automation ideas and smart mechanisms.",
-    href: "/projects/automation-gadgets",
-  },
+    {
+      title: "Automation Gadgets",
+      description: "Useful automation ideas and smart mechanisms.",
+      href: "/projects/automation-gadgets",
+    },
 
-  {
-    title: "Mini Cooper",
-    description: "Custom parts, accessories and upgrades.",
-    href: "/projects/mini-cooper",
-  },
+    {
+      title: "Mini Cooper",
+      description: "Custom parts, accessories and upgrades.",
+      href: "/projects/mini-cooper",
+    },
 
-  {
-    title: "Traditional Shaving",
-    description: "Stands, holders and shaving accessories.",
-    href: "/projects/traditional-shaving",
-  },
-];
+    {
+      title: "Traditional Shaving",
+      description: "Stands, holders and shaving accessories.",
+      href: "/projects/traditional-shaving",
+    },
+  ],
+
+  el: [
+    {
+      title: "Ενυδρείο",
+      description:
+        "Λειτουργικά 3D printed εξαρτήματα για ενυδρεία και custom setups.",
+      href: "/projects/aquarium",
+    },
+
+    {
+      title: "Αυτοματισμοί",
+      description:
+        "Χρήσιμες ιδέες αυτοματισμού, έξυπνοι μηχανισμοί και πρακτικές λύσεις.",
+      href: "/projects/automation-gadgets",
+    },
+
+    {
+      title: "Μίνι Κούπερ",
+      description:
+        "Custom parts, αξεσουάρ και μικρές αναβαθμίσεις για Mini Cooper.",
+      href: "/projects/mini-cooper",
+    },
+
+    {
+      title: "Παραδοσιακό Ξύρισμα",
+      description:
+        "Βάσεις, holders και αξεσουάρ για εξοπλισμό παραδοσιακού ξυρίσματος.",
+      href: "/projects/traditional-shaving",
+    },
+  ],
+};
 
 export default function ProjectsPage() {
   const { lang } = useLanguage();
 
   const t = text[lang];
+  const currentCategories = categories[lang];
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#020617] text-white">
@@ -81,7 +116,7 @@ export default function ProjectsPage() {
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
-            {categories.map((category) => (
+            {currentCategories.map((category) => (
               <Link
                 key={category.href}
                 href={category.href}
@@ -96,7 +131,7 @@ export default function ProjectsPage() {
                 </p>
 
                 <p className="mt-8 font-bold text-cyan-300">
-                  Open category →
+                  {t.openCategory}
                 </p>
               </Link>
             ))}

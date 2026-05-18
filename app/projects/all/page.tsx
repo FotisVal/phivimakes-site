@@ -12,12 +12,29 @@ const text = {
     openProject: "Open project →",
     back: "← Back to projects",
   },
+
   el: {
     title: "ΟΛΑ ΤΑ PROJECTS",
     subtitle:
       "Όλα τα projects από κάθε κατηγορία, ταξινομημένα από το νεότερο στο παλαιότερο.",
     openProject: "Άνοιγμα project →",
-    back: "← Πίσω στα έργα",
+    back: "← Πίσω στα projects",
+  },
+};
+
+const typeText = {
+  en: {
+    Aquarium: "Aquarium",
+    "Automation Gadgets": "Automation Gadgets",
+    "Mini Cooper": "Mini Cooper",
+    "Traditional Shaving": "Traditional Shaving",
+  },
+
+  el: {
+    Aquarium: "Ενυδρείο",
+    "Automation Gadgets": "Automation Gadgets",
+    "Mini Cooper": "Mini Cooper",
+    "Traditional Shaving": "Παραδοσιακό Ξύρισμα",
   },
 };
 
@@ -62,13 +79,14 @@ export default function AllProjectsPage() {
                 <div className="mb-8 overflow-hidden rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/20 via-blue-500/10 to-violet-500/20">
                   <img
                     src={project.coverImage}
-                    alt={project.title}
+                    alt={lang === "el" ? project.title : project.titleEn}
                     className="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
                   />
                 </div>
 
                 <p className="text-sm font-semibold text-cyan-300">
-                  {project.type}
+                  {typeText[lang][project.type as keyof typeof typeText.en] ??
+                    project.type}
                 </p>
 
                 <h2 className="mt-3 text-2xl font-black text-cyan-100">
@@ -76,7 +94,9 @@ export default function AllProjectsPage() {
                 </h2>
 
                 <p className="mt-4 line-clamp-2 text-slate-300">
-                  {project.shortDescription}
+                  {lang === "el"
+                    ? project.shortDescription
+                    : project.shortDescriptionEn}
                 </p>
 
                 <p className="mt-6 font-bold text-cyan-300 group-hover:text-cyan-200">
