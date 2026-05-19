@@ -4,6 +4,7 @@ import Link from "next/link";
 import { allProjects } from "@/data/projects";
 import { useLanguage } from "@/components/LanguageProvider";
 import Navbar from "@/components/Navbar";
+import HeroAnimation from "@/components/HeroAnimation";
 
 const text = {
   el: {
@@ -97,16 +98,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-square w-full max-w-[560px]">
-            <div className="absolute inset-0 rounded-[3rem] border border-cyan-300/20 bg-slate-950/35 shadow-[0_0_90px_rgba(34,211,238,0.16)] backdrop-blur-xl" />
-            <div className="absolute inset-5 rounded-[2.5rem] border border-fuchsia-400/20" />
-            <div className="absolute left-1/2 top-1/2 h-64 w-64 -translate-x-1/2 -translate-y-1/2 animate-[float_6s_ease-in-out_infinite] rounded-[2rem] border border-cyan-300/50 bg-cyan-300/10 shadow-[0_0_90px_rgba(34,211,238,0.35)] backdrop-blur-xl md:h-80 md:w-80" />
-            <div className="absolute bottom-[22%] left-1/2 h-28 w-44 -translate-x-1/2 rounded-[2rem] border border-cyan-300/40 bg-slate-900/70 shadow-[0_0_70px_rgba(34,211,238,0.25)] backdrop-blur-xl">
-              <div className="absolute left-1/2 top-[-54px] h-20 w-20 -translate-x-1/2 rounded-full border border-cyan-300/40 bg-slate-900 shadow-[0_0_45px_rgba(34,211,238,0.25)]" />
-              <div className="absolute left-1/2 top-[-28px] h-3 w-16 -translate-x-1/2 rounded-full bg-cyan-300/60" />
-              <div className="absolute left-8 top-8 h-3 w-28 rounded-full bg-cyan-300/40" />
-              <div className="absolute left-8 top-14 h-3 w-20 rounded-full bg-fuchsia-400/30" />
-            </div>
+          <div className="relative mx-auto w-full max-w-[620px]">
+            <HeroAnimation />
           </div>
         </div>
       </section>

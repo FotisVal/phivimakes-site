@@ -9,10 +9,13 @@ export const lagoumiProject: Project = {
   href: "/projects/aquarium/lagoumi",
   date: "2026-05-25",
 
-  shortDescriptionEn:
-    "Custom aquarium cave for fish shelter and aquascaping.",
-
   shortDescription:
+    "Custom σπηλιά ενυδρείου για κρυψώνα ψαριών και φυσική ένταξη στο aquascape.",
+
+  shortDescriptionEn:
+    "Custom aquarium cave for fish shelter and natural integration into the aquascape.",
+
+  description:
     "Το Λαγούμι είναι μια 3D printed κατασκευή για ενυδρείο, σχεδιασμένη ώστε να προσφέρει κρυψώνα στα ψάρια και να ενσωματώνεται όμορφα στο aquascape.",
 
   coverImage: "/projects/aquarium/lagoumi/cover-generated.jpg",
