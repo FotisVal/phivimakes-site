@@ -8,39 +8,45 @@ export default function HeroAnimation() {
             50% { transform: translateY(-10px); }
           }
 
-          @keyframes blink {
+          @keyframes blinkTogether {
             0%, 92%, 100% { transform: scaleY(1); }
             95% { transform: scaleY(0.12); }
           }
 
           @keyframes printerHead {
             0%, 100% { transform: translateX(0px); }
-            50% { transform: translateX(58px); }
+            50% { transform: translateX(54px); }
           }
 
           @keyframes filamentMove {
             0% { stroke-dashoffset: 0; }
-            100% { stroke-dashoffset: -60; }
+            100% { stroke-dashoffset: -48; }
           }
 
           @keyframes ideaPop {
-            0%, 100% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.08); opacity: 1; }
+            0%, 100% { transform: scale(1); opacity: 0.95; }
+            50% { transform: scale(1.06); opacity: 1; }
           }
 
           @keyframes codePulse {
-            0%, 100% { opacity: 0.35; transform: translateY(0px); }
-            50% { opacity: 1; transform: translateY(-5px); }
+            0%, 100% { opacity: 0.4; transform: translateY(0px); }
+            50% { opacity: 1; transform: translateY(-4px); }
           }
 
           @keyframes coffeeSteam {
             0% { opacity: 0; transform: translateY(16px); }
-            40% { opacity: 0.7; }
+            35% { opacity: 0.75; }
             100% { opacity: 0; transform: translateY(-24px); }
           }
 
           .float-soft { animation: floatSoft 4.5s ease-in-out infinite; }
-          .blink { transform-origin: center; animation: blink 4.2s ease-in-out infinite; }
+
+          .blink-group {
+            transform-box: fill-box;
+            transform-origin: center;
+            animation: blinkTogether 4.2s ease-in-out infinite;
+          }
+
           .printer-head { animation: printerHead 3s ease-in-out infinite; }
           .filament { stroke-dasharray: 12 12; animation: filamentMove 1.4s linear infinite; }
           .idea { transform-origin: center; animation: ideaPop 2.4s ease-in-out infinite; }
@@ -57,7 +63,7 @@ export default function HeroAnimation() {
         viewBox="0 0 900 620"
         className="h-auto w-full"
         role="img"
-        aria-label="Animated PhiViMakes creator with laptop and 3D printer"
+        aria-label="Animated nerd with laptop and 3D printer"
       >
         <defs>
           <linearGradient id="cyanGlow" x1="0" x2="1" y1="0" y2="1">
@@ -68,67 +74,62 @@ export default function HeroAnimation() {
           <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
             <feDropShadow
               dx="0"
-              dy="18"
-              stdDeviation="18"
+              dy="16"
+              stdDeviation="16"
               floodColor="#000000"
               floodOpacity="0.28"
             />
           </filter>
         </defs>
 
-        {/* background glow */}
-        <circle cx="450" cy="310" r="290" fill="#0f172a" opacity="0.24" />
-        <circle cx="650" cy="210" r="170" fill="#22d3ee" opacity="0.08" />
-        <circle cx="230" cy="400" r="140" fill="#3b82f6" opacity="0.08" />
+        {/* background glow - transparent page background */}
+        <circle cx="450" cy="310" r="290" fill="#8b5cf6" opacity="0.28" />
+        <circle cx="660" cy="210" r="170" fill="#22d3ee" opacity="0.08" />
+        <circle cx="225" cy="410" r="145" fill="#3b82f6" opacity="0.08" />
 
-        {/* code bubbles */}
+        {/* floating cards */}
         <g className="float-soft">
           <rect
             x="70"
-            y="80"
-            width="160"
-            height="92"
+            y="84"
+            width="166"
+            height="94"
             rx="24"
             fill="#020617"
             stroke="#22d3ee"
-            strokeOpacity="0.55"
+            strokeOpacity="0.6"
             strokeWidth="3"
           />
-          <text x="95" y="120" fill="#67e8f9" fontSize="22" fontWeight="800">
+          <text x="94" y="124" fill="#67e8f9" fontSize="22" fontWeight="800">
             {"<idea />"}
           </text>
-          <text className="code-1" x="96" y="148" fill="#ffffff" fontSize="16">
+          <text x="96" y="152" fill="#ffffff" fontSize="16" className="code-1">
             prototype
           </text>
         </g>
 
         <g className="float-soft" style={{ animationDelay: "0.8s" }}>
           <rect
-            x="680"
-            y="58"
-            width="150"
+            x="684"
+            y="62"
+            width="146"
             height="92"
             rx="24"
             fill="#020617"
             stroke="#22d3ee"
-            strokeOpacity="0.45"
+            strokeOpacity="0.5"
             strokeWidth="3"
           />
-          <text x="705" y="100" fill="#67e8f9" fontSize="20" fontWeight="800">
+          <text x="708" y="102" fill="#67e8f9" fontSize="20" fontWeight="800">
             CAD
           </text>
-          <text className="code-2" x="705" y="130" fill="#ffffff" fontSize="16">
-            print(); 
+          <text x="708" y="132" fill="#ffffff" fontSize="16" className="code-2">
+            print();
           </text>
         </g>
 
         {/* desk */}
-        <path
-          d="M95 526 H805"
-          stroke="#0f172a"
-          strokeWidth="18"
-          strokeLinecap="round"
-        />
+        <path d="M95 526 H805" stroke="#0f172a" strokeWidth="18" strokeLinecap="round" />
         <path
           d="M115 510 H785"
           stroke="url(#cyanGlow)"
@@ -137,28 +138,69 @@ export default function HeroAnimation() {
           opacity="0.55"
         />
 
-        {/* girl */}
+        {/* person */}
         <g filter="url(#softShadow)">
-          {/* body */}
+          {/* torso */}
           <path
-            d="M250 475 C270 390 350 370 405 430 C430 460 420 510 420 510 H225 C225 510 232 495 250 475Z"
+            d="M236 510
+               C248 440 290 398 340 398
+               C391 398 434 440 446 510
+               Z"
             fill="#ffffff"
             stroke="#020617"
             strokeWidth="8"
             strokeLinejoin="round"
           />
 
-          {/* neck */}
+          {/* hair back - FIRST, so neck stays visible */}
           <path
-            d="M340 318 V385"
+            d="M234 252
+               C234 184 281 138 339 133
+               C398 128 449 155 472 209
+               C493 258 485 325 445 368
+               C426 389 401 402 372 406
+               C358 408 350 404 346 394
+               C342 384 342 370 342 356
+               H338
+               C338 370 338 384 334 394
+               C330 404 322 408 308 406
+               C279 402 254 389 235 368
+               C196 324 192 253 234 252
+               Z"
+            fill="#020617"
+          />
+
+          {/* left lower hair mass */}
+          <path
+            d="M252 300
+               C212 314 191 356 208 395
+               C224 430 275 436 318 405
+               C280 391 259 352 252 300
+               Z"
+            fill="#020617"
+          />
+
+          {/* right lower hair mass */}
+          <path
+            d="M428 300
+               C468 314 489 356 472 395
+               C456 430 405 436 362 405
+               C400 391 421 352 428 300
+               Z"
+            fill="#020617"
+          />
+
+          {/* thicker neck */}
+          <path
+            d="M340 323 V389"
             stroke="#020617"
-            strokeWidth="48"
+            strokeWidth="28"
             strokeLinecap="round"
           />
           <path
-            d="M340 318 V385"
+            d="M340 323 V389"
             stroke="#ffffff"
-            strokeWidth="34"
+            strokeWidth="18"
             strokeLinecap="round"
           />
 
@@ -169,24 +211,44 @@ export default function HeroAnimation() {
             r="94"
             fill="#ffffff"
             stroke="#020617"
-            strokeWidth="8"
+            strokeWidth="6"
           />
 
-          {/* hair */}
+          {/* main front hair */}
           <path
-            d="M270 235 C275 165 335 125 402 156 C438 173 452 212 444 260 C418 216 377 198 324 205 C294 209 278 222 270 235Z"
+            d="M257 239
+               C270 169 326 139 388 147
+               C431 153 460 184 464 234
+               C423 211 381 201 336 203
+               C299 205 275 218 257 239
+               Z"
             fill="#020617"
           />
-          <circle cx="310" cy="145" r="35" fill="#020617" />
+
+          {/* left fringe - widened to remove the gap */}
           <path
-            d="M280 140 C305 95 370 102 392 150"
-            fill="none"
-            stroke="#020617"
-            strokeWidth="18"
-            strokeLinecap="round"
+            d="M260 236
+               C278 184 324 156 384 157
+               C355 175 326 194 301 223
+               C289 236 280 250 273 265
+               C266 258 261 248 260 236
+               Z"
+            fill="#020617"
           />
 
-          {/* nerd glasses */}
+          {/* extra left filler patch */}
+          <path
+            d="M246 250
+               C248 223 260 200 281 181
+               C293 170 307 163 322 160
+               C300 179 283 201 271 226
+               C264 240 259 255 258 270
+               C252 266 248 259 246 250
+               Z"
+            fill="#020617"
+          />
+
+          {/* glasses */}
           <circle
             cx="312"
             cy="260"
@@ -207,45 +269,34 @@ export default function HeroAnimation() {
           <path d="M283 255 L260 246" stroke="#020617" strokeWidth="8" />
           <path d="M411 255 L432 246" stroke="#020617" strokeWidth="8" />
 
-          {/* eyes */}
-          <ellipse className="blink" cx="312" cy="260" rx="8" ry="11" fill="#020617" />
-          <ellipse className="blink" cx="382" cy="260" rx="8" ry="11" fill="#020617" />
+          {/* eyes - blink together */}
+          <g className="blink-group">
+            <ellipse cx="312" cy="260" rx="8" ry="11" fill="#020617" />
+            <ellipse cx="382" cy="260" rx="8" ry="11" fill="#020617" />
+          </g>
 
           {/* cheeks */}
-          <circle cx="286" cy="298" r="15" fill="#f8d9a0" opacity="0.85" />
-          <circle cx="407" cy="298" r="15" fill="#f8d9a0" opacity="0.85" />
+          <circle cx="286" cy="298" r="15" fill="#f8d9a0" opacity="0.88" />
+          <circle cx="407" cy="298" r="15" fill="#f8d9a0" opacity="0.88" />
 
-          {/* mouth */}
+          {/* smile */}
           <path
-            d="M326 315 C342 330 365 327 378 313"
+            d="M325 314 C342 329 364 327 378 313"
             fill="none"
             stroke="#020617"
             strokeWidth="7"
             strokeLinecap="round"
           />
-
-          {/* hand thinking */}
-          <path
-            d="M424 340 C455 365 462 420 430 444"
-            fill="none"
-            stroke="#020617"
-            strokeWidth="34"
-            strokeLinecap="round"
-          />
-          <path
-            d="M424 340 C455 365 462 420 430 444"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="22"
-            strokeLinecap="round"
-          />
-          <circle cx="425" cy="335" r="16" fill="#ffffff" stroke="#020617" strokeWidth="7" />
         </g>
 
         {/* laptop */}
         <g filter="url(#softShadow)">
           <path
-            d="M315 395 H560 C583 395 598 414 592 436 L565 525 H260 L285 418 C289 404 300 395 315 395Z"
+            d="M315 397 H560
+               C583 397 598 416 592 437
+               L565 525 H260
+               L285 420
+               C289 405 300 397 315 397Z"
             fill="#f8fafc"
             stroke="#020617"
             strokeWidth="8"
@@ -268,7 +319,7 @@ export default function HeroAnimation() {
           />
         </g>
 
-        {/* coffee */}
+        {/* coffee mug */}
         <g>
           <path
             d="M120 438 H180 V515 H120 Z"
@@ -283,9 +334,30 @@ export default function HeroAnimation() {
             stroke="#020617"
             strokeWidth="7"
           />
-          <path className="steam-1" d="M135 420 C120 395 150 390 135 365" fill="none" stroke="#22d3ee" strokeWidth="5" strokeLinecap="round" />
-          <path className="steam-2" d="M155 420 C140 395 170 390 155 365" fill="none" stroke="#22d3ee" strokeWidth="5" strokeLinecap="round" />
-          <path className="steam-3" d="M175 420 C160 395 190 390 175 365" fill="none" stroke="#22d3ee" strokeWidth="5" strokeLinecap="round" />
+          <path
+            className="steam-1"
+            d="M135 420 C120 395 150 390 135 365"
+            fill="none"
+            stroke="#22d3ee"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
+          <path
+            className="steam-2"
+            d="M155 420 C140 395 170 390 155 365"
+            fill="none"
+            stroke="#22d3ee"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
+          <path
+            className="steam-3"
+            d="M175 420 C160 395 190 390 175 365"
+            fill="none"
+            stroke="#22d3ee"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
         </g>
 
         {/* 3D printer */}
@@ -354,28 +426,50 @@ export default function HeroAnimation() {
             strokeLinejoin="round"
           />
 
-          <rect x="670" y="440" width="60" height="25" rx="6" fill="#e2e8f0" stroke="#020617" strokeWidth="6" />
-          <circle cx="765" cy="452" r="18" fill="#e2e8f0" stroke="#020617" strokeWidth="6" />
+          <rect
+            x="670"
+            y="440"
+            width="60"
+            height="25"
+            rx="6"
+            fill="#e2e8f0"
+            stroke="#020617"
+            strokeWidth="6"
+          />
+          <circle
+            cx="765"
+            cy="452"
+            r="18"
+            fill="#e2e8f0"
+            stroke="#020617"
+            strokeWidth="6"
+          />
         </g>
 
         {/* idea bubble */}
         <g className="idea">
-          <circle cx="505" cy="145" r="62" fill="#ffffff" stroke="#020617" strokeWidth="8" />
+          <circle cx="505" cy="145" r="72" fill="#ffffff" stroke="#020617" strokeWidth="8" />
           <circle cx="445" cy="250" r="17" fill="#ffffff" stroke="#020617" strokeWidth="7" />
           <circle cx="475" cy="214" r="24" fill="#ffffff" stroke="#020617" strokeWidth="7" />
 
+          {/* smaller bulb */}
           <path
-            d="M505 115 C480 115 465 135 473 158 C479 174 494 178 494 195 H516 C516 178 532 172 537 155 C544 132 529 115 505 115Z"
+            d="M505 128
+               C490 128 480 140 484 154
+               C488 164 496 168 496 179
+               H514
+               C514 168 522 164 526 154
+               C530 140 520 128 505 128Z"
             fill="#f8d9a0"
             stroke="#020617"
-            strokeWidth="7"
+            strokeWidth="5"
             strokeLinejoin="round"
           />
-          <path d="M492 205 H518" stroke="#020617" strokeWidth="7" strokeLinecap="round" />
-          <path d="M496 220 H514" stroke="#020617" strokeWidth="7" strokeLinecap="round" />
-          <path d="M505 96 V73" stroke="#020617" strokeWidth="7" strokeLinecap="round" />
-          <path d="M463 110 L447 92" stroke="#020617" strokeWidth="7" strokeLinecap="round" />
-          <path d="M547 110 L563 92" stroke="#020617" strokeWidth="7" strokeLinecap="round" />
+          <path d="M492 188 H518" stroke="#020617" strokeWidth="5" strokeLinecap="round" />
+          <path d="M495 198 H515" stroke="#020617" strokeWidth="5" strokeLinecap="round" />
+          <path d="M505 112 V98" stroke="#020617" strokeWidth="5" strokeLinecap="round" />
+          <path d="M482 120 L473 110" stroke="#020617" strokeWidth="5" strokeLinecap="round" />
+          <path d="M528 120 L537 110" stroke="#020617" strokeWidth="5" strokeLinecap="round" />
         </g>
       </svg>
     </div>
